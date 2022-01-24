@@ -41,6 +41,7 @@ kotlin {
                 // Serialization
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.1.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+                implementation ("com.google.code.gson:gson:2.8.5")
             }
         }
         val commonTest by getting {

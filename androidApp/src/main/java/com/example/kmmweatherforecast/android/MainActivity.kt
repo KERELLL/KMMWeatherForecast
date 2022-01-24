@@ -44,24 +44,25 @@ class MainActivity : AppCompatActivity() {
                 modifier = Modifier.fillMaxSize().padding(horizontal = 30.dp)
                 ) {
                     val text = remember { mutableStateOf("") }
+                    var text2 : String = ""
                     TextField(text.value, { text.value = it }, singleLine = true, modifier = Modifier.fillMaxWidth())
                     Spacer(Modifier.height(16.dp))
                     Button(onClick = {
                         scope.launch {
                             mainScope.launch {
                                 kotlin.runCatching {
-                                    greeting.greeting()
+                                    greeting.greeting(text.value)
                                 }.onSuccess {
                                     text.value = it
                                 }.onFailure {
-                                    text.value = "Error: ${it.localizedMessage}"
+                                    text.value= "Error: ${it.localizedMessage}"
                                 }
                             }
-                            scaffoldState.snackbarHostState.showSnackbar("Hello $textFieldState")
+                            scaffoldState.snackbarHostState.showSnackbar("Hello ${text2}")
                         }
 
                     }){
-                        Text("Pls greet")
+                        Text("Search")
                     }
                 }
             }
